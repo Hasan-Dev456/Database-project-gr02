@@ -13,9 +13,9 @@ CREATE TABLE Plane_Model (
 CREATE TABLE Airplane (
     plane_no INT PRIMARY KEY,
     model_no VARCHAR(50),
-    capacity INT,
+    capacity INT  CHECK (capacity > 0),
     manufacture_year YEAR,
-    total_flight_hours INT DEFAULT 0,
+    total_flight_hours INT DEFAULT 0 CHECK (total_flight_hours >= 0),
     status VARCHAR(30),
 
     FOREIGN KEY (model_no)
@@ -88,7 +88,7 @@ CREATE TABLE Flight (
     departure_airport VARCHAR(100),
     arrival_airport VARCHAR(100),
     departure_time DATETIME,
-    arrival_time DATETIME,
+    arrival_time DATETIME CHECK (arrival_time > departure_time),
     status VARCHAR(30),
     airline_id INT,
 
