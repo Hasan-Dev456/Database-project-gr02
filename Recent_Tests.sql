@@ -1,3 +1,3 @@
 SELECT *
 FROM Testing_Event
-WHERE test_date >= SYSDATE - 30;
+WHERE test_date > '2026-04-01';

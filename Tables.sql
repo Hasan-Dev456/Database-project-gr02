@@ -88,12 +88,15 @@ CREATE TABLE Flight (
     departure_airport VARCHAR(100),
     arrival_airport VARCHAR(100),
     departure_time DATETIME,
-    arrival_time DATETIME CHECK (arrival_time > departure_time),
+    arrival_time DATETIME,
     status VARCHAR(30),
     airline_id INT,
 
+    CHECK (arrival_time > departure_time),
+
     FOREIGN KEY (airline_id)
-    REFERENCES Airline(airline_id)
+    REFERENCES Airline(airline_id),
+
     FOREIGN KEY (plane_no)
     REFERENCES Airplane(plane_no)
 );
