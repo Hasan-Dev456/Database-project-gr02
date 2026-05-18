@@ -37,7 +37,11 @@ CREATE TABLE Parking (
     FOREIGN KEY (plane_no) REFERENCES Airplane(plane_no),
     FOREIGN KEY (hangar_no) REFERENCES Hangar(hangar_no)
 );
-
+CREATE TABLE Union_Info (
+    union_no VARCHAR(50) PRIMARY KEY,
+    union_name VARCHAR(100),
+    office_location VARCHAR(100)
+);
 CREATE TABLE Employee (
     ssn INT PRIMARY KEY,
     first_name VARCHAR(50),
@@ -46,7 +50,9 @@ CREATE TABLE Employee (
     email VARCHAR(100) UNIQUE,
     salary DECIMAL(10,2),
     hire_date DATE,
-    union_no VARCHAR(50)
+    union_no VARCHAR(50),
+    FOREIGN KEY (union_no)
+    REFERENCES Union_Info(union_no)
 );
 
 CREATE TABLE Airport_Staff (
