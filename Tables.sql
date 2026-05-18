@@ -1,3 +1,8 @@
+CREATE TABLE Airline (
+    airline_id INT PRIMARY KEY,
+    airline_name VARCHAR(100),
+    country VARCHAR(50)
+);
 CREATE TABLE Plane_Model (
     model_no VARCHAR(50) PRIMARY KEY,
     manufacturer VARCHAR(100),
@@ -54,7 +59,6 @@ CREATE TABLE Airport_Staff (
 
 CREATE TABLE Technician (
     ssn INT PRIMARY KEY,
-    name VARCHAR(100),
     FOREIGN KEY (ssn) REFERENCES Employee(ssn)
 );
 
@@ -80,7 +84,10 @@ CREATE TABLE Flight (
     departure_time DATETIME,
     arrival_time DATETIME,
     status VARCHAR(30),
+    airline_id INT,
 
+    FOREIGN KEY (airline_id)
+    REFERENCES Airline(airline_id)
     FOREIGN KEY (plane_no)
     REFERENCES Airplane(plane_no)
 );
